@@ -58,17 +58,17 @@ class login(tkinter.Frame):
             else:
                 messagebox.showwarning('Caution!', 'Wrong Email or Password',)
         
-        self.config(bg= "white")        
+        self.config(bg= "#EFEDE7")        
          
         button_submit = tkinter.Button(
             self, text = "Login", width= 25, command = on_click, 
-            state = ACTIVE, bg= "white").place(x = 180, y = 200) 
+            state = NORMAL, bg= "#8FB9A8").place(x = 200, y = 200) 
         
         label_email = tkinter.Label(
-            self, text = "Email:", bg= "white").place(x=50, y=80)
+            self, text = "Email:", bg= "#EFEDE7").place(x=50, y=80)
 
         label_password = tkinter.Label(
-            self, text = "Password:", bg= "white").place(x=50, y=120)
+            self, text = "Password:", bg= "#EFEDE7").place(x=50, y=120)
         
 
         text_input_email = tkinter.Entry(self, width=50)
@@ -121,7 +121,11 @@ class mainMenu(tkinter.Frame):
             if conf.upper() == "YES":
                 global tasks
                 tasks = []
-                update_tasks()
+                lb_tasks.delete(0, "end")
+                for task in tasks:
+                    lb_tasks.insert("end", task)
+                numtask = len(tasks)
+                label_dsp_count['text'] = numtask
             else:
                 pass
 
@@ -215,29 +219,26 @@ class mainMenu(tkinter.Frame):
                 text_input_task.insert(0, 'Add Text...')
                 text_input_task.config(fg = 'grey')
         
-        self.config(bg= "white")
+        self.config(bg= "#EFEDE7")
         
         tasks = []
         history = []
         
         
-        label_title = tkinter.Label(self, bg= "white", text="To Do List")
+        label_title = tkinter.Label(self, bg= "#EFEDE7", text="To Do List")
         label_title.grid(row=0, column=0)
 
-        label_blank = tkinter.Label(self, bg= "white", text="")
+        label_blank = tkinter.Label(self, bg= "#EFEDE7", text="")
         label_blank.grid(row=8, column=0)
 
-        label_task_dsply = tkinter.Label(self, bg= "white", text="Task")
+        label_task_dsply = tkinter.Label(self, bg= "#EFEDE7", text="Task")
         label_task_dsply.grid(row=1, column=1)
 
-        label_history_dsply = tkinter.Label(self, bg= "white", text="History")
+        label_history_dsply = tkinter.Label(self, bg= "#EFEDE7", text="History")
         label_history_dsply.grid(row=1, column=2)
 
-        label_dsp_count = tkinter.Label(self, bg= "white", text="")
+        label_dsp_count = tkinter.Label(self, bg= "#EFEDE7", text="")
         label_dsp_count.grid(row=0, column=3)
-
-        label_dsp_task = tkinter.Label(self, bg= "white", text="")
-        label_dsp_task.grid(row=0, column=1)
 
         text_input_task = tkinter.Entry(self, width=15)
         text_input_task.grid(row=2, column=1)
@@ -247,39 +248,39 @@ class mainMenu(tkinter.Frame):
         text_input_task.config(fg = 'grey')
 
         text_add_bttn = tkinter.Button(
-            self, text="Add Task", fg="green", width=15, bg= "white", command=add_task)
+            self, text="Add Task", width=15, bg= "#8FB9A8", command=add_task)
         text_add_bttn.grid(row=1, column=0)
 
         done_bttn = tkinter.Button(
-            self, text="Done Task", width=15, bg= "white", command=delete_one)
+            self, text="Done Task", width=15, bg= "#E8E8E8", command=delete_one)
         done_bttn.grid(row=2, column=0)
 
         delall_bttn = tkinter.Button(
-            self, text="Delete all", width=15, bg= "white", command=delete_all)
+            self, text="Delete all", width=15, bg= "#E8E8E8", command=delete_all)
         delall_bttn.grid(row=3, column=0)
 
         sort_asc = tkinter.Button(
-            self, text="Sort (ASC)", width=15, bg= "white", command=sort_asc)
+            self, text="Sort (ASC)", width=15, bg= "#E8E8E8", command=sort_asc)
         sort_asc.grid(row=4, column=0)
 
         sort_dsc = tkinter.Button(
-            self, text="Sort (DSC)", width=15, bg= "white", command=sort_dsc)
+            self, text="Sort (DSC)", width=15, bg= "#E8E8E8", command=sort_dsc)
         sort_dsc.grid(row=5, column=0)
 
         random_bttn = tkinter.Button(
-            self, text="Random Task", width=15, bg= "white", command=random_task)
+            self, text="Random Task", width=15, bg= "#E8E8E8", command=random_task)
         random_bttn.grid(row=6, column=0)
 
         exit_bttn = tkinter.Button(
-            self, text="Exit app", width=15, bg= "white", command=exit_app)
+            self, text="Exit app", width=15, bg= "#E7CAC2", command=exit_app)
         exit_bttn.grid(row=7, column=0)
 
         save_button = tkinter.Button(
-            self, text="Save Task", width=15, bg= "white", command=save_act)
+            self, text="Save Task", width=15, bg= "#E8E8E8", command=save_act)
         save_button.grid(row=10, column=1)
 
         load_button = tkinter.Button(
-            self, text="Load Task", width=15, bg= "white", command=load_act)
+            self, text="Load Task", width=15, bg= "#E8E8E8", command=load_act)
         load_button.grid(row=10, column=0)
 
         lb_tasks = tkinter.Listbox(
